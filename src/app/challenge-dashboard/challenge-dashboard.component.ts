@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
 
 @Component({
+  standalone:false,
   selector: 'app-challenge-dashboard',
   templateUrl: './challenge-dashboard.component.html',
   styleUrls: ['./challenge-dashboard.component.css']

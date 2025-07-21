@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookService, Book } from '../book.service';
 
 @Component({
+  standalone:false,
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css']
