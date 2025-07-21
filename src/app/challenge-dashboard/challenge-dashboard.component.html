@@ -1,0 +1,37 @@
+<!-- src/app/challenge-dashboard.component.html -->
+<h2 class="text-2xl font-semibold mb-6">📅 Lese-Challenge Dashboard</h2>
+
+<!-- Fortschrittsbalken Anzeige -->
+<div class="mb-4">
+  <p class="mb-2">Jahresziel: {{ goal }} Bücher</p>
+  <div class="bg-gray-300 w-full rounded h-6 overflow-hidden">
+    <!-- Innerer Balken -->
+    <div class="bg-green-500 h-full" [style.width.%]="progressPercent"></div>
+  </div>
+  <p class="mt-1 text-sm">{{ booksReadCount }} von {{ goal }} Büchern gelesen ({{ progressPercent }}%)</p>
+</div>
+
+<!-- Eingabeformular für Lese-Sessions -->
+<div class="mb-6 p-4 border rounded">
+  <h3 class="font-semibold mb-2">Tägliche Lesesitzung protokollieren:</h3>
+  <div class="mb-2">
+    <label for="pagesInput" class="mr-2">Heute gelesene Seiten:</label>
+    <input id="pagesInput" type="number" [(ngModel)]="pagesToday" class="border p-1" placeholder="z.B. 20">
+  </div>
+  <button (click)="logReadingSession()" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">
+    Hinzufügen
+  </button>
+</div>
+
+<!-- Anzeige des Lese-Logs -->
+<div *ngIf="readingLog.length > 0">
+  <h3 class="font-semibold mb-2">Leselog:</h3>
+  <ul>
+    <li *ngFor="let entry of readingLog" class="mb-1">
+      📖 Am {{ entry.date }}: {{ entry.pages }} Seiten gelesen.
+    </li>
+  </ul>
+</div>
+<div *ngIf="readingLog.length === 0">
+  <p>Noch keine Lesesitzungen protokolliert.</p>
+</div>

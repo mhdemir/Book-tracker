@@ -1,0 +1,15 @@
+<!-- src/app/app.component.html -->
+<nav class="bg-blue-600 text-white p-4 flex justify-between items-center">
+  <!-- Navigationsleiste mit zwei Links -->
+  <div class="text-xl font-bold">📚 Bücher-Tracker</div>
+  <div>
+    <!-- RouterLink verbindet zu den definierten Routen -->
+    <a routerLink="" class="mr-4 hover:underline">Meine Bücher</a>
+    <a routerLink="challenge" class="hover:underline">Lese-Challenge</a>
+  </div>
+</nav>
+
+<!-- Hauptinhalt: hier werden die Komponenten gemäß Route eingebettet -->
+<div class="p-6">
+  <router-outlet></router-outlet>
+</div>

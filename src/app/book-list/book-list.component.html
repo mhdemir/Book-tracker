@@ -1,0 +1,47 @@
+<!-- src/app/book-list/book-list.component.html -->
+<h2 class="text-2xl font-semibold mb-4">📖 Gelesene Bücher</h2>
+<ul class="mb-8">
+  <li *ngFor="let book of gelesen" class="mb-4 p-4 border rounded shadow-sm flex">
+    <!-- Buch Cover -->
+    <img [src]="'https://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" 
+         [alt]="'Cover von ' + book.title" class="w-16 h-24 object-cover mr-4">
+    <!-- Buch Details -->
+    <div>
+      <h3 class="text-lg font-bold">{{ book.title }}</h3>
+      <p>Autor: {{ book.author }}</p>
+      <p *ngIf="book.category">Kategorie: {{ book.category }}</p>
+      <p *ngIf="book.rating">Bewertung: {{ book.rating }} / 5</p>
+    </div>
+  </li>
+  <li *ngIf="gelesen.length === 0">Keine Bücher in dieser Kategorie.</li>
+</ul>
+
+<h2 class="text-2xl font-semibold mb-4">📚 Lese ich gerade</h2>
+<ul class="mb-8">
+  <li *ngFor="let book of leseIchGerade" class="mb-4 p-4 border rounded shadow-sm flex">
+    <img [src]="'https://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'"
+         [alt]="'Cover von ' + book.title" class="w-16 h-24 object-cover mr-4">
+    <div>
+      <h3 class="text-lg font-bold">{{ book.title }}</h3>
+      <p>Autor: {{ book.author }}</p>
+      <p *ngIf="book.category">Kategorie: {{ book.category }}</p>
+      <!-- Bei "aktuell lesen" gibt es noch keine Bewertung, daher kein rating hier -->
+    </div>
+  </li>
+  <li *ngIf="leseIchGerade.length === 0">Keine Bücher in dieser Kategorie.</li>
+</ul>
+
+<h2 class="text-2xl font-semibold mb-4">🕮 Geplante Bücher</h2>
+<ul class="mb-8">
+  <li *ngFor="let book of geplant" class="mb-4 p-4 border rounded shadow-sm flex">
+    <img [src]="'https://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'"
+         [alt]="'Cover von ' + book.title" class="w-16 h-24 object-cover mr-4">
+    <div>
+      <h3 class="text-lg font-bold">{{ book.title }}</h3>
+      <p>Autor: {{ book.author }}</p>
+      <p *ngIf="book.category">Kategorie: {{ book.category }}</p>
+      <!-- Geplante Bücher haben weder Bewertung noch Gelesen-Datum -->
+    </div>
+  </li>
+  <li *ngIf="geplant.length === 0">Keine Bücher in dieser Kategorie.</li>
+</ul>
