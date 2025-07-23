@@ -1,0 +1,28 @@
+<div *ngIf="isOpen" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+  <div class="bg-white rounded-lg p-6 w-96 shadow-lg">
+    <h2 class="text-xl font-bold mb-4">📘 Buch hinzufügen</h2>
+    
+    <label class="block mb-2">Titel</label>
+    <input [(ngModel)]="title" class="border p-2 w-full mb-4 rounded" type="text" />
+
+    <label class="block mb-2">Autor</label>
+    <input [(ngModel)]="author" class="border p-2 w-full mb-4 rounded" type="text" />
+
+    <label class="block mb-2">Kategorie</label>
+    <select [(ngModel)]="category" class="border p-2 w-full mb-4 rounded">
+      <option value="Roman">Roman</option>
+      <option value="Thriller">Thriller</option>
+      <option value="Sachbuch">Sachbuch</option>
+      <option value="Manga">Manga</option>
+      <option value="Fantasy">Fantasy</option>
+      <option value="Geplant">Geplant</option>
+    </select>
+
+    <div class="flex justify-end">
+      <button (click)="close()" class="px-4 py-2 bg-gray-300 rounded mr-2">Abbrechen</button>
+      <button (click)="submit()" [disabled]="loading" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        {{ loading ? 'Lädt...' : 'Hinzufügen' }}
+      </button>
+    </div>
+  </div>
+</div>

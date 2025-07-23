@@ -1,0 +1,51 @@
+<!-- ✅ BUCH-HINZUFÜGEN-KOMPONENTE OBEN -->
+<app-add-book-modal (bookAdded)="addBook($event)" #addBookModal></app-add-book-modal>
+
+<div class="flex justify-end mb-4">
+  <button (click)="addBookModal.open()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+    ➕ Buch hinzufügen
+  </button>
+</div>
+
+<!-- 📘 GELESEN -->
+<h2 class="text-2xl font-semibold mb-4">📖 Gelesene Bücher</h2>
+<ul class="mb-8">
+  <li *ngFor="let book of gelesen" class="mb-4 p-4 border rounded shadow-sm flex">
+    <img [src]="book.coverUrl" [alt]="'Cover von ' + book.title" class="w-16 h-24 object-cover mr-4">
+    <div>
+      <h3 class="text-lg font-bold">{{ book.title }}</h3>
+      <p>Autor: {{ book.author }}</p>
+      <p *ngIf="book.category">Kategorie: {{ book.category }}</p>
+      <p *ngIf="book.rating">Bewertung: {{ book.rating }} / 5</p>
+    </div>
+  </li>
+  <li *ngIf="gelesen.length === 0">Keine Bücher in dieser Kategorie.</li>
+</ul>
+
+<!-- 📖 LESE ICH GERADE -->
+<h2 class="text-2xl font-semibold mb-4">📚 Lese ich gerade</h2>
+<ul class="mb-8">
+  <li *ngFor="let book of leseIchGerade" class="mb-4 p-4 border rounded shadow-sm flex">
+    <img [src]="book.coverUrl" [alt]="'Cover von ' + book.title" class="w-16 h-24 object-cover mr-4">
+    <div>
+      <h3 class="text-lg font-bold">{{ book.title }}</h3>
+      <p>Autor: {{ book.author }}</p>
+      <p *ngIf="book.category">Kategorie: {{ book.category }}</p>
+    </div>
+  </li>
+  <li *ngIf="leseIchGerade.length === 0">Keine Bücher in dieser Kategorie.</li>
+</ul>
+
+<!-- 📒 GEPLANT -->
+<h2 class="text-2xl font-semibold mb-4">🕮 Geplante Bücher</h2>
+<ul class="mb-8">
+  <li *ngFor="let book of geplant" class="mb-4 p-4 border rounded shadow-sm flex">
+    <img [src]="book.coverUrl" [alt]="'Cover von ' + book.title" class="w-16 h-24 object-cover mr-4">
+    <div>
+      <h3 class="text-lg font-bold">{{ book.title }}</h3>
+      <p>Autor: {{ book.author }}</p>
+      <p *ngIf="book.category">Kategorie: {{ book.category }}</p>
+    </div>
+  </li>
+  <li *ngIf="geplant.length === 0">Keine Bücher in dieser Kategorie.</li>
+</ul>
